@@ -1,0 +1,460 @@
+/* fonts */
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* presentation */
+@import '@animotion/core/theme';
+
+/* tailwind */
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+/* reset */
+*,
+*::before,
+*::after {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+/* defaults */
+:root {
+	--r-background-color: oklch(20% 0.01 272);
+	--r-main-font: 'Manrope Variable';
+	--r-main-font-size: 42px;
+	--r-main-color: oklch(98% 0.02 272);
+	--r-heading-font: 'Manrope';
+	--r-code-font: 'JetBrains Mono Variable';
+	--r-link-color: oklch(90.54% 0.15 194);
+	--ease: linear(
+		0 0%,
+		0.0036 9.62%,
+		0.0185 16.66%,
+		0.0489 23.03%,
+		0.0962 28.86%,
+		0.1705 34.93%,
+		0.269 40.66%,
+		0.3867 45.89%,
+		0.5833 52.95%,
+		0.683 57.05%,
+		0.7829 62.14%,
+		0.8621 67.46%,
+		0.8991 70.68%,
+		0.9299 74.03%,
+		0.9545 77.52%,
+		0.9735 81.21%,
+		0.9865 85%,
+		0.9949 89.15%,
+		1 100%
+	);
+	/* * Custom Dimension */
+	--slide-width-height-ratio: calc(16 / 9);
+	--slide-max-height: min(100dvh, calc(100dvw / var(--slide-width-height-ratio)));
+	--slide-max-width: min(100dvw, calc(100dvh * var(--slide-width-height-ratio)));
+
+	/* * Custom Size */
+	/* 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 128 */
+	--base-unit: calc(var(--slide-max-height) / 1008);
+	--size-2: calc(var(--base-unit) * 2);
+	--size-4: calc(var(--base-unit) * 4);
+	--size-8: calc(var(--base-unit) * 8);
+	--size-12: calc(var(--base-unit) * 12);
+	--size-16: calc(var(--base-unit) * 16);
+	--size-20: calc(var(--base-unit) * 20);
+	--size-24: calc(var(--base-unit) * 24);
+	--size-30: calc(var(--base-unit) * 30);
+	--size-32: calc(var(--base-unit) * 32);
+	--size-36: calc(var(--base-unit) * 36);
+	--size-40: calc(var(--base-unit) * 40);
+	--size-48: calc(var(--base-unit) * 48);
+	--size-56: calc(var(--base-unit) * 56);
+	--size-60: calc(var(--base-unit) * 60);
+	--size-64: calc(var(--base-unit) * 64);
+	--size-72: calc(var(--base-unit) * 72);
+	--size-80: calc(var(--base-unit) * 80);
+	--size-88: calc(var(--base-unit) * 88);
+	--size-96: calc(var(--base-unit) * 96);
+	--size-128: calc(var(--base-unit) * 128);
+	--size-144: calc(var(--base-unit) * 144);
+	--size-192: calc(var(--base-unit) * 192);
+	--size-256: calc(var(--base-unit) * 256);
+	--size-288: calc(var(--base-unit) * 288);
+
+	--size-50: calc(var(--base-unit) * 50);
+	--size-100: calc(var(--base-unit) * 100);
+	--size-150: calc(var(--base-unit) * 150);
+	--size-200: calc(var(--base-unit) * 200);
+	--size-250: calc(var(--base-unit) * 250);
+	--size-300: calc(var(--base-unit) * 300);
+	--size-350: calc(var(--base-unit) * 350);
+	--size-400: calc(var(--base-unit) * 400);
+	--size-450: calc(var(--base-unit) * 450);
+	--size-500: calc(var(--base-unit) * 500);
+	--size-600: calc(var(--base-unit) * 600);
+	--size-800: calc(var(--base-unit) * 800);
+	--size-1000: calc(var(--base-unit) * 1000);
+	--size-1200: calc(var(--base-unit) * 1200);
+	--size-1500: calc(var(--base-unit) * 1500);
+	--size-1600: calc(var(--base-unit) * 1600);
+	--size-1700: calc(var(--base-unit) * 1700);
+	--size-1800: calc(var(--base-unit) * 1800);
+	--size-1900: calc(var(--base-unit) * 1900);
+	--size-2000: calc(var(--base-unit) * 2000);
+}
+
+/* code block */
+div:has(> pre) {
+	padding: var(--size-24) var(--size-24);
+	background-color: oklch(24% 0.02 272);
+	border-top: 1px solid oklch(34% 0.02 272);
+	border-radius: var(--radius-lg);
+}
+
+/* view transitions */
+html {
+	view-transition-name: none;
+	/* * Background for debugging */
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+::view-transition-group(*) {
+	animation-duration: 0.6s;
+	animation-timing-function: var(--ease);
+}
+
+/* animations */
+.enter {
+	animation: enter 0.6s var(--ease);
+}
+
+.rotate {
+	animation: rotate 0.6s var(--ease);
+}
+
+@keyframes enter {
+	from {
+		filter: blur(40px);
+		scale: 0;
+		translate: 0px 100vh;
+	}
+}
+
+@keyframes rotate {
+	from {
+		filter: blur(4px);
+		scale: 2;
+		rotate: -1turn;
+	}
+}
+
+/* * Custom */
+/* Main body div */
+.reveal-viewport {
+	aspect-ratio: 16 / 9;
+	inset: 0px;
+	max-height: var(--slide-max-height);
+	max-width: var(--slide-max-width);
+}
+
+/* Font size */
+.s-2xl {
+	font-size: var(--size-24);
+	line-height: var(--size-32);
+}
+.s-3xl {
+	font-size: var(--size-30);
+	line-height: var(--size-36);
+}
+.s-4xl {
+	font-size: var(--size-36);
+	line-height: var(--size-40);
+}
+.s-5xl {
+	font-size: var(--size-48);
+}
+.s-6xl {
+	font-size: var(--size-60);
+}
+.s-7xl {
+	font-size: var(--size-72);
+}
+.s-8xl {
+	font-size: var(--size-96);
+}
+.s-9xl {
+	font-size: var(--size-128);
+}
+.s-10xl {
+	font-size: var(--size-144);
+}
+
+/* <Slide> */
+.slides section {
+	height: 100%;
+	width: 100%;
+	place-content: center;
+	place-items: center;
+	display: flex !important;
+	flex-direction: column;
+	padding: var(--size-20);
+}
+
+/* Reusable */
+.slide-header-div {
+	position: absolute;
+	width: 100%;
+	top: 2%;
+}
+
+/* MoneyLion Logo */
+.bottom-left-logo {
+	position: absolute;
+	bottom: 2%;
+	left: 2%;
+	height: var(--size-72);
+	z-index: -99;
+}
+
+/* Icon */
+.icon {
+	height: var(--size-128);
+	width: var(--size-128);
+}
+
+/* Screenshot */
+.screenshot {
+	height: var(--size-2000);
+	z-index: -1;
+}
+
+.screenshot-description-div {
+	width: var(--size-600);
+	z-index: 1;
+	position: absolute;
+	top: 12%;
+	left: 4%;
+}
+
+/* <code> */
+code {
+	background-color: rgb(45, 44, 54);
+	border-radius: var(--size-12);
+	padding-left: var(--size-12);
+	padding-right: var(--size-12);
+}
+
+/* Gap between list */
+ol li,
+ul li {
+	margin-bottom: var(--size-24);
+}
+li ul {
+	margin-top: var(--size-16);
+}
+
+ul,
+ol {
+	padding-left: var(--size-56);
+}
+
+/* Calling block */
+.fetch-product-categories-block,
+.fetch-trending-product-block {
+	min-width: var(--size-288);
+	max-width: var(--size-400);
+	min-height: var(--size-96);
+	max-height: var(--size-144);
+	height: var(--size-144);
+	border-radius: var(--size-24);
+	color: black;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	font-size: var(--size-40);
+	margin: var(--size-8);
+}
+
+.fetch-product-categories-block {
+	background-color: yellowgreen;
+}
+
+.fetch-trending-product-block {
+	background-color: rgb(224, 224, 66);
+}
+
+/* Graph */
+.line-chart-div {
+	width: var(--size-1000);
+	height: var(--size-800);
+}
+.line-chart-description-div {
+	width: var(--size-600);
+	gap: var(--size-24);
+}
+
+/* Visualize thread relationship */
+.layer-div {
+	background-color: dodgerblue;
+	border-radius: var(--size-24);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	/* justify-content: space-around; */
+	align-items: stretch;
+	/* gap: var(--size-16); */
+	height: var(--size-500);
+	width: var(--size-300);
+}
+
+.cpu-core-container {
+	background-color: rgb(88, 127, 165);
+}
+.os-thread-container {
+	background-color: rgb(60, 113, 165);
+}
+.platform-thread-container {
+	background-color: rgb(46, 131, 215);
+}
+.virtual-thread-container {
+	background-color: rgb(0, 112, 223);
+}
+
+.layer-item {
+	background-color: white;
+	color: black;
+	height: var(--size-64);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--size-12);
+	margin-left: var(--size-16);
+	margin-right: var(--size-16);
+	margin-top: auto;
+	margin-bottom: auto;
+	font-size: var(--size-30);
+}
+
+.connection-line {
+	width: var(--size-100);
+	height: var(--size-8);
+	background-color: wheat;
+}
+
+/* Profile Hyperlink */
+.profile-link {
+	color: var(--r-link-color);
+	font-size: var(--size-96);
+}
+
+/* Thread Pool Executor Visualization */
+.task-queue-box {
+	position: absolute;
+	min-width: 50%;
+	height: 14%;
+	right: 40%;
+	bottom: 8%;
+	display: flex;
+	background-color: rebeccapurple;
+	border-radius: calc(0.04 * var(--slide-max-height));
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: nowrap;
+	flex-direction: row-reverse;
+	align-items: center;
+	padding: 0 2% 0 2%;
+}
+
+.task-queue-box-alt {
+	position: absolute;
+	min-width: 50%;
+	height: 14%;
+	right: 24%;
+	bottom: 8%;
+	display: flex;
+	background-color: rebeccapurple;
+	border-radius: calc(0.04 * var(--slide-max-height));
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: nowrap;
+	flex-direction: row-reverse;
+	align-items: center;
+	padding: 0 2% 0 2%;
+}
+
+.task-circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: lightblue;
+	border-radius: 50%;
+	aspect-ratio: 1 / 1;
+	height: calc(0.13 * var(--slide-max-height));
+	margin-left: calc(-0.02 * var(--slide-max-width));
+	border: solid mediumblue;
+	color: black;
+	font-size: calc(0.04 * var(--slide-max-height));
+}
+
+.thread-pool-box {
+	position: absolute;
+	right: 2%;
+	bottom: 8%;
+	min-height: calc(0.8 * var(--slide-max-height));
+	width: calc(0.3 * var(--slide-max-width));
+	max-height: calc(4 * var(--slide-max-height));
+	background-color: brown;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	gap: calc(0.01 * var(--slide-max-height));
+	border-radius: calc(0.04 * var(--slide-max-height));
+}
+
+.thread-box {
+	background-color: aliceblue;
+	color: black;
+	margin: 4% 5% 4% 5%;
+	height: calc(0.14 * var(--slide-max-height));
+	border-radius: calc(0.014 * var(--slide-max-height));
+	padding: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.task-container-box {
+	aspect-ratio: 1 / 1;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.thread-label {
+	text-align: center;
+	font-size: calc(0.05 * var(--slide-max-height));
+	margin-left: calc(0.04 * var(--slide-max-width));
+}
+
+.task-container-box .task-circle {
+	margin-left: 0;
+}
+
+/* Table of content */
+.toc-div {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-top: var(--size-32);
+	gap: var(--size-36);
+}
