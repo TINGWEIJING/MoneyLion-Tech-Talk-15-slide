@@ -1,57 +1,69 @@
 <script lang="ts">
-	import { CODE_OPTIONS } from '$lib/constant'
-	import { Presentation, Slide, Code, Transition, Action } from '@animotion/core'
-	import { tween, all, animate, wait } from '@animotion/motion'
+  import { CODE_OPTIONS_LINE_NUM } from '$lib/constant';
+  import { Presentation, Slide, Code, Transition, Action } from '@animotion/core';
+  import { tween, all, animate, wait } from '@animotion/motion';
 
-	let code: Code
-	const rawCode = `@GetMapping("/{userId}/personalized-trends")
-public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String userId) {
+  let code: Code;
+  const rawCode = `@GetMapping("/{id}/personalized-trends")
+public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String id) {
     // fetch user personalized product categories
     PersonalizedProductCategories personalizedProductCategories
-            = fetchPersonalizedProductCategories(userId);
+            = fetchPersonalizedProductCategories(id);
     // fetch trending products for each category
-    List<List<String>> nestCategoryProductList = personalizedProductCategories
+    List<CompletableFuture<List<String>>> futures = personalizedProductCategories
             .getCategories()
             .stream()
             .map(category -> CompletableFuture.supplyAsync(
                     () -> fetchTrendingProductsByCategory(category)
             ))
+            .collect(Collectors.toList());
+    List<List<String>> nestCategoryProductList = futures.stream()
             .map(CompletableFuture::join)
             .collect(Collectors.toList());
     return mapToPersonalizedTrendsResp(nestCategoryProductList);
-}`
+}`;
 
-	const rawCode02 = `@GetMapping("/{userId}/personalized-trends")
-public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String userId) {
+  const rawCode02 = `@GetMapping("/{id}/personalized-trends")
+public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String id) {
     // async tasks
 }
 
-@GetMapping("/{userId}/personalized-recommendations")
-public PersonalizedRecommendationsResp getPersonalizedRecommendations(@PathVariable String userId) {
+@GetMapping("/{id}/personalized-recommendations")
+public PersonalizedRecommendationsResp getPersonalizedRecommendations(@PathVariable String id) {
     // more async tasks
 }
 
-@GetMapping("/{userId}/recent-category-activities")
-public RecentActivitiesResp getRecentCategoryActivities(@PathVariable String userId) {
+@GetMapping("/{id}/recent-category-activities")
+public RecentActivitiesResp getRecentCategoryActivities(@PathVariable String id) {
     // more and more async tasks
-}`
+}`;
 </script>
 
 <Slide
-	in={() => {
-		code.update`${rawCode}`
-	}}
+  in={async () => {
+    await code.update`${rawCode}`;
+    await code.selectLines`*`;
+  }}
 >
-	<p class="slide-header-div s-6xl font-bold">More Endpoints</p>
-	<div class="s-5xl">
-		<Code bind:this={code} lang="java" theme="poimandres" code={rawCode} options={CODE_OPTIONS} />
-	</div>
-	<Action
-		do={() => {
-			code.update`${rawCode02}`
-		}}
-	/>
-	<!-- TODO: Show code & explain this is using platform thread -->
-	<!-- TODO: No control, ForkJoinPool. commonPool() -->
-	<!-- TODO: In reality, other endpoint may spawn thread for asynchronous task, imaging high trafiic -->
+  <p class="slide-header-div s-6xl font-bold">More Endpoints</p>
+  <div class="s-5bxl">
+    <Code
+      bind:this={code}
+      lang="java"
+      theme="poimandres"
+      code={rawCode}
+      options={CODE_OPTIONS_LINE_NUM}
+    />
+  </div>
+  <Action
+    do={() => {
+      code.selectLines`10-12`;
+    }}
+  />
+  <Action
+    do={async () => {
+      await code.update`${rawCode02}`;
+      await code.selectLines`*`;
+    }}
+  />
 </Slide>

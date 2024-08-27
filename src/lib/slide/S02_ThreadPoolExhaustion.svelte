@@ -4,9 +4,12 @@
 </script>
 
 <Slide>
-	<p class="s-9xl font-bold">Thread Pool Exhaustion</p>
-	<p class="s-6xl">
+	<div class="heading-01">
+		<p>02</p>
+		<p class="s-9xl font-bold">Thread Pool Exhaustion</p>
+	</div>
+	<!-- <p class="s-6xl">
 		Occurs when all available threads in a pool are in use, preventing any new tasks from starting
 		until some threads become free
-	</p>
+	</p> -->
 </Slide>

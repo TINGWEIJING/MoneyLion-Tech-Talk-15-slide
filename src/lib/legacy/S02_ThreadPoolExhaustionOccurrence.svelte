@@ -26,8 +26,8 @@
 		<div class="flex flex-col">
 			<p class="s-4xl">OS Thread</p>
 			<div class="layer-div os-thread-container">
-				<div class="layer-item">OS thread #1</div>
-				<div class="layer-item">OS thread #2</div>
+				<div class="layer-item" transition:fly>OS thread #1</div>
+				<div class="layer-item" transition:fly>OS thread #2</div>
 				{#if shouldSpawnThreads}
 					<div class="layer-item" in:fade>OS thread #3</div>
 					<div class="layer-item" in:fade>OS thread #4</div>

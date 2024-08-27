@@ -4,5 +4,8 @@
 </script>
 
 <Slide>
-	<p class="s-9xl font-bold">Monitoring & Adjustment</p>
+	<div class="heading-01">
+		<p>05</p>
+		<p class="s-9xl font-bold">Monitoring & Adjustment</p>
+	</div>
 </Slide>

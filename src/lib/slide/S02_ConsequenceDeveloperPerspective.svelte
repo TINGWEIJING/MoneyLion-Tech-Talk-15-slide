@@ -1,19 +1,35 @@
 <script lang="ts">
-	import { Presentation, Slide, Code, Transition, Action } from '@animotion/core'
-	import { tween, all, animate, wait } from '@animotion/motion'
+  import { Presentation, Slide, Code, Transition, Action } from '@animotion/core';
+  import { tween, all, animate, wait } from '@animotion/motion';
+
+  let showStep = $state(0);
 </script>
 
-<Slide>
-	<p class="slide-header-div s-6xl font-bold">Consequences</p>
-	<p class="s-8xl">Developer perspective:</p>
-	<ol class="s-5xl text-wrap pl-24 text-left">
-		<li>
-			Observed unpredictable delays between the execution of subsequent asynchronous tasks, as
-			thread pool exhaustion can cause irregular time gaps in task scheduling.
-		</li>
-		<li>
-			Errors: <code class="s-4xl">java.net.SocketException: Broken pipe (Write failed)</code> or
-			<code class="s-4xl">java.io.IOException: Broken pipe </code>
-		</li>
-	</ol>
+<Slide
+  in={() => {
+    showStep = 0;
+  }}
+>
+  <p class="slide-header-div s-6xl font-bold">Developer Perspective</p>
+  <ol class="s-7xl w-[94%] text-wrap text-left">
+    <Transition visible>
+      <li style:opacity={showStep > 0 ? '65%' : '100%'}>
+        Observed <u>unpredictable delays between the execution of subsequent asynchronous tasks</u>,
+        as thread pool exhaustion can cause irregular time gaps in task scheduling.
+      </li>
+    </Transition>
+    <Transition
+      do={() => {
+        showStep += 1;
+      }}
+    >
+      <li>
+        Errors:
+        <ul class="s-5xl" style="list-style-type:disc;">
+          <li><code>java.net.SocketException: Broken pipe (Write failed)</code></li>
+          <li><code>java.io.IOException: Broken pipe</code></li>
+        </ul>
+      </li>
+    </Transition>
+  </ol>
 </Slide>

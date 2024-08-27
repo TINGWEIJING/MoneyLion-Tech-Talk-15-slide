@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CODE_OPTIONS } from '$lib/constant'
+	import { CODE_OPTIONS_LINE_NUM } from '$lib/constant'
 	import { Presentation, Slide, Code, Transition, Action } from '@animotion/core'
 	import { tween, all, animate, wait } from '@animotion/motion'
 
@@ -33,11 +33,21 @@ public Executor threadPoolTaskExecutor() {
 >
 	<p class="slide-header-div s-6xl font-bold">Configuration Result</p>
 	<div class="s-7xl">
-		<Code bind:this={code} lang="java" theme="poimandres" code={rawCode} options={CODE_OPTIONS} />
+		<Code
+			bind:this={code}
+			lang="java"
+			theme="poimandres"
+			code={rawCode}
+			options={CODE_OPTIONS_LINE_NUM}
+		/>
 	</div>
 	<Action
 		do={async () => {
 			await code.selectLines`4-6`
+		}}
+	/>
+	<Action
+		do={async () => {
 			await code.update`${rawCode02}`
 		}}
 	/>

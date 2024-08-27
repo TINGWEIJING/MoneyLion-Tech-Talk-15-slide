@@ -7,9 +7,14 @@
 
   interface TaskQueueBoxProps {
     initialTaskCount?: number;
-    div_class?: string;
+    backgroundColor?: string;
+    showTaskLabel?: boolean;
   }
-  let { initialTaskCount, div_class = 'task-queue-box' }: TaskQueueBoxProps = $props();
+  let {
+    initialTaskCount,
+    backgroundColor = 'rebeccapurple',
+    showTaskLabel = false
+  }: TaskQueueBoxProps = $props();
   let tasks: Task[] = $state([]);
   let taskCounter: number = $state(0);
 
@@ -49,7 +54,7 @@
   export { initTasks, addTask, submitTask, getTaskCount };
 </script>
 
-<div class={div_class}>
+<div class="task-queue-box" style:background-color={backgroundColor}>
   {#each tasks as task (task.id)}
     <div
       class="task-circle"
@@ -58,38 +63,17 @@
       in:receive={{ key: task.id }}
       out:send={{ key: task.id }}
     >
-      {`${task.id + 1}`}
+      {showTaskLabel ? `${task.id + 1}` : ''}
     </div>
   {/each}
 </div>
 
 <style>
   .task-queue-box {
-    position: absolute;
-    min-width: 50%;
-    height: 14%;
-    right: 40%;
-    bottom: 8%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    background-color: rebeccapurple;
-    border-radius: calc(0.04 * var(--slide-max-height));
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    flex-direction: row-reverse;
-    align-items: center;
-    padding: 0 2% 0 2%;
-  }
-
-  .task-queue-box-alt {
-    position: absolute;
-    min-width: 50%;
-    height: 14%;
-    right: 24%;
-    bottom: 8%;
-    display: flex;
-    background-color: rebeccapurple;
-    border-radius: calc(0.04 * var(--slide-max-height));
+    border-radius: var(--size-40);
     display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;

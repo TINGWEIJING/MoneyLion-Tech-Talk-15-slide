@@ -6,8 +6,14 @@
 
   interface ThreadPoolBoxProps {
     initialThreadCount?: number;
+    backgroundColor?: string;
+    showTaskLabel?: boolean;
   }
-  let { initialThreadCount }: ThreadPoolBoxProps = $props();
+  let {
+    initialThreadCount,
+    backgroundColor = 'brown',
+    showTaskLabel = false
+  }: ThreadPoolBoxProps = $props();
   let threads: Thread[] = $state([]);
   let threadCounter: number = $state(0);
 
@@ -83,7 +89,7 @@
   export { initThreads, spawnThread, killThread, addTask, completeTask };
 </script>
 
-<div class="thread-pool-box">
+<div class="thread-pool-box" style:background-color={backgroundColor}>
   {#each threads as thread (thread.id)}
     <div class="thread-box" transition:slide>
       <div class="task-container-box">
@@ -93,7 +99,7 @@
             in:receive={{ key: thread.taskId }}
             out:send={{ key: thread.taskId }}
           >
-            {`${thread.taskId + 1}`}
+            {showTaskLabel ? `${thread.taskId + 1}` : ''}
           </div>
         {/if}
       </div>
@@ -104,28 +110,23 @@
 
 <style>
   .thread-pool-box {
-    position: absolute;
-    right: 6%;
-    bottom: 8%;
-    min-height: calc(0.8 * var(--slide-max-height));
-    width: calc(0.3 * var(--slide-max-width));
-    max-height: calc(4 * var(--slide-max-height));
-    background-color: brown;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: stretch;
-    gap: calc(0.01 * var(--slide-max-height));
-    border-radius: calc(0.04 * var(--slide-max-height));
+    gap: var(--size-12);
+    border-radius: var(--size-40);
   }
 
   .thread-box {
     background-color: aliceblue;
     color: black;
     margin: 4% 5% 4% 5%;
-    height: calc(0.14 * var(--slide-max-height));
-    border-radius: calc(0.014 * var(--slide-max-height));
+    height: var(--size-144);
+    border-radius: var(--size-16);
     padding: auto;
     display: flex;
     justify-content: center;
@@ -144,7 +145,7 @@
 
   .thread-label {
     text-align: center;
-    font-size: calc(0.05 * var(--slide-max-height));
-    margin-left: calc(0.04 * var(--slide-max-width));
+    font-size: var(--size-50);
+    margin-left: var(--size-72);
   }
 </style>
