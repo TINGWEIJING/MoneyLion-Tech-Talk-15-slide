@@ -1,6 +1,8 @@
-# Animotion Template
+# MoneyLion Tech Talk #15
+Title: `Optimizing Performance: Tackling Thread Pool Exhaustion to Reduce Backend Latency`
 
-This is an Animotion presentation.
+
+This is a presentation slide developed using [Animotion.js](https://github.com/animotionjs/animotion).
 
 ## Setup
 

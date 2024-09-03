@@ -6,10 +6,5 @@ export default defineConfig({
   plugins: [sveltekit(), tailwindcss()],
   server: {
     port: 8173
-  },
-  build: {
-    // TODO (WJ): remove
-    sourcemap: true,
-    minify: false
   }
 });
