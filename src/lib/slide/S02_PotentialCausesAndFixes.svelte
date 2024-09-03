@@ -2,8 +2,6 @@
   import { Presentation, Slide, Code, Transition, Action } from '@animotion/core';
   import { tween, all, animate, wait } from '@animotion/motion';
 
-  let showStep = $state(0);
-
   let cause01Opacity = $state(1);
   let cause02Opacity = $state(0.65);
   let cause03Opacity = $state(0.65);

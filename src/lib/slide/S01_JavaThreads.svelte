@@ -8,7 +8,6 @@
   let cpuCoreLayer: ThreadLayer;
   let osThreadLayer: ThreadLayer;
   let platformThreadLayer: ThreadLayer;
-  let virtualThreadLayer: ThreadLayer | undefined;
   let shouldHideVirtualThread = $state(false);
 </script>
 
@@ -17,7 +16,6 @@
     cpuCoreLayer.initThreads(1);
     osThreadLayer.initThreads(2);
     platformThreadLayer.initThreads(2);
-    virtualThreadLayer?.initThreads(5);
     shouldHideVirtualThread = false;
   }}
 >
@@ -82,12 +80,7 @@
       <div class="flex flex-col items-center" transition:fade>
         <p class="s-4xl">Java<br />Virtual Thread</p>
         <div class="sized-thread-layer">
-          <ThreadLayer
-            bind:this={virtualThreadLayer}
-            initialThreadCount={5}
-            backgroundColor="lightcoral"
-            label="Virtual thread"
-          />
+          <ThreadLayer initialThreadCount={5} backgroundColor="lightcoral" label="Virtual thread" />
         </div>
       </div>
     {/if}

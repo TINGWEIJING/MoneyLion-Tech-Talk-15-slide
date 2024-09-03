@@ -118,8 +118,7 @@ div:has(> pre) {
 html {
   view-transition-name: none;
   /* * Background for debugging */
-  background-color: gray;
-  /* TODO: change to black */
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
