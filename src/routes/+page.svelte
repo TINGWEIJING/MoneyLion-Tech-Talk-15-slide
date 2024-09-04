@@ -119,7 +119,7 @@
     <div class="author-div">
       <p>Ting Wei Jing</p>
       <p class="s-2xl">Backend Engineer I, MoneyLion</p>
-      <p>September 04. 2024</p>
+      <p>September 04, 2024</p>
     </div>
   </Slide>
 

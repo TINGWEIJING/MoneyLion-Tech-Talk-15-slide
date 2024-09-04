@@ -37,7 +37,7 @@
         <ul style="list-style-type:disc;">
           <li>
             <div
-              class="alert-div flex items-center border-solid border-red-300 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
+              class="alert-div flex items-center border-solid border-red-300 bg-red-50 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               <p>408 Request Timeout</p>
@@ -45,7 +45,7 @@
           </li>
           <li>
             <div
-              class="alert-div flex items-center border-solid border-red-300 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
+              class="alert-div flex items-center border-solid border-red-300 bg-red-50 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               <p>503 Service Unavailable</p>
@@ -53,7 +53,7 @@
           </li>
           <li>
             <div
-              class="alert-div flex items-center border-solid border-red-300 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
+              class="alert-div flex items-center border-solid border-red-300 bg-red-50 text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               <p>504 Gateway Timeout</p>
@@ -107,5 +107,6 @@
     margin-bottom: var(--size-4);
     border-radius: var(--size-8);
     border-width: var(--size-4);
+    padding: var(--size-16);
   }
 </style>

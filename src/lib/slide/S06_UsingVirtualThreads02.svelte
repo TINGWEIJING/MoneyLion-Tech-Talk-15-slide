@@ -65,6 +65,11 @@ public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String id) {
   />
   <Action
     do={async () => {
+      await codeB.selectLines`3,9-12`;
+    }}
+  />
+  <Action
+    do={async () => {
       await codeB.update`${rawCodeB02}`;
     }}
   />

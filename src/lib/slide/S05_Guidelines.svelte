@@ -28,7 +28,7 @@
       <li style:opacity={showStep > 1 ? '65%' : '100%'}>
         <b>Caution in Decreasing Pool Size</b>
         <ul style="list-style-type:disc;">
-          <li class="s-5xl">Traffic is extremely underestimated and remains consistently low.</li>
+          <li class="s-5xl">Traffic is extremely overestimated and remains consistently low.</li>
           <li class="s-5xl">Reducing hardware resources for cost savings.</li>
         </ul>
       </li>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CODE_OPTIONS_LINE_NUM } from '$lib/constant';
+  import { CODE_OPTIONS, CODE_OPTIONS_LINE_NUM } from '$lib/constant';
   import { Presentation, Slide, Code, Transition, Action } from '@animotion/core';
   import { tween, all, animate, wait } from '@animotion/motion';
 
@@ -56,8 +56,13 @@ public RecentActivitiesResp getRecentCategoryActivities(@PathVariable String id)
     />
   </div>
   <Action
-    do={() => {
-      code.selectLines`10-12`;
+    do={async () => {
+      await code.selectLines`10-12`;
+    }}
+  />
+  <Action
+    do={async () => {
+      await code.selectLines`10-12`;
     }}
   />
   <Action

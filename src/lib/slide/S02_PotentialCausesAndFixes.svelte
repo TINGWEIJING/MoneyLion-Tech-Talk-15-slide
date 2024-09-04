@@ -98,4 +98,16 @@
       fix03Opacity = 1;
     }}
   />
+  <Transition
+    do={() => {
+      cause01Opacity = 1;
+      fix01Opacity = 1;
+
+      cause02Opacity = 0.65;
+      fix02Opacity = 0.65;
+
+      cause03Opacity = 0.65;
+      fix03Opacity = 0.65;
+    }}
+  />
 </Slide>

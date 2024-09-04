@@ -61,6 +61,11 @@ public PersonalizedTrendsResp getPersonalizedTrends(@PathVariable String id) {
   />
   <Action
     do={async () => {
+      await code.selectLines`3-5`;
+    }}
+  />
+  <Action
+    do={async () => {
       await code.selectLines`6-11`;
     }}
   />
